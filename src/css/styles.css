@@ -10,33 +10,17 @@ body {
   padding-right: 20em;
 }
 
-.nav-link,
-.nav-link:hover,
-.nav-link:focus {
-  color: chocolate;
-}
-
 #cadastro {
   width: 50em;
   padding: 6em;
-}
-
-.btn-primary {
-  background-color: chocolate;
-  border: chocolate;
-}
-
-.btn-primary:hover {
-  background-color: #b45a1a;
-  border: #b45a1a;
-}
-
-.btn-outline-secondary:focus,
-.btn-outline-secondary:hover {
-  background-color: #f8f8f8;
-  color: black;
+  display: flex;
+  flex-direction: column;
 }
 
 #btn {
   margin-top: 2em;
+}
+
+#extrato {
+  margin: 2em 0;
 }

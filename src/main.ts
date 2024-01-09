@@ -2,35 +2,54 @@ import { Banco } from "./banco.js";
 const banco = new Banco();
 
 function informacoesDoUsuario() {
-  const btn = document.getElementById("btn-submit");
-  let nomeInput = document.getElementById("nome") as HTMLInputElement | any;
-  let saldoInput = document.getElementById("saldo") as HTMLInputElement | any;
-  let depositoInput = document.getElementById("deposito") as
-    | HTMLInputElement
-    | any;
-  let saqueInput = document.getElementById("saque") as HTMLInputElement | any;
+  let nomeInput: string = (document.getElementById("nome") as HTMLInputElement)
+    .value;
+  let saldoInput: number = parseInt(
+    (document.getElementById("saldo") as HTMLInputElement).value
+  );
+  let depositoInput: number = parseInt(
+    (document.getElementById("deposito") as HTMLInputElement).value
+  );
+  let saqueInput: number = parseInt(
+    (document.getElementById("saque") as HTMLInputElement).value
+  );
 
-  btn.addEventListener("click", () => {
-    const clienteId = 1;
-    const nome = nomeInput?.value || "Anônimo";
-    const saldo = parseFloat(saldoInput?.value || "0") || 0;
-    const deposito = parseFloat(depositoInput?.value || "0") || 0;
-    const saque = parseFloat(saqueInput?.value || "0") || 0;
-
-    const userInfo = {
-      nome: nome,
-      saldo: saldo,
-      deposito: deposito,
-      saque: saque,
-    };
-
-    console.log(JSON.stringify(userInfo));
-
-    banco.cadastrarCliente(nome, saldo);
-    banco.consultarSaldo(clienteId);
-    banco.depositar(clienteId, deposito);
-    banco.sacar(clienteId, saque);
-  });
+  if (nomeInput && !isNaN(saldoInput)) {
+    banco.cadastrarCliente(nomeInput, saldoInput);
+    if (!isNaN(depositoInput)) {
+      banco.depositar(1, depositoInput);
+      if (!isNaN(saqueInput)) {
+        banco.sacar(1, saqueInput);
+        document.getElementById(
+          "extrato"
+        ).innerHTML = `<p class="fw-medium text-center">Saldo do cliente ${nomeInput} é de R$${banco.consultarSaldo(
+          1
+        )}</p>`;
+      } else {
+        alert("Valor de saque inválido");
+      }
+    } else {
+      alert("Valor do depósito inválido");
+    }
+  } else {
+    alert("Dados inválidos");
+  }
 }
 
-informacoesDoUsuario();
+function limparInputs() {
+  let nomeInput = document.getElementById("nome") as HTMLInputElement | null;
+  let saldoInput = document.getElementById("saldo") as HTMLInputElement | null;
+  let depositoInput = document.getElementById(
+    "deposito"
+  ) as HTMLInputElement | null;
+  let saqueInput = document.getElementById("saque") as HTMLInputElement | null;
+  if (nomeInput) nomeInput.value = "";
+  if (saldoInput) saldoInput.value = "";
+  if (depositoInput) depositoInput.value = "";
+  if (saqueInput) saqueInput.value = "";
+}
+
+document
+  .getElementById("btn-submit")
+  .addEventListener("click", informacoesDoUsuario);
+document.getElementById("btn-limpar").addEventListener("click", limparInputs);

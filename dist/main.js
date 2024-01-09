@@ -1,28 +1,46 @@
 import { Banco } from "./banco.js";
 const banco = new Banco();
 function informacoesDoUsuario() {
-    const btn = document.getElementById("btn-submit");
+    let nomeInput = document.getElementById("nome")
+        .value;
+    let saldoInput = parseInt(document.getElementById("saldo").value);
+    let depositoInput = parseInt(document.getElementById("deposito").value);
+    let saqueInput = parseInt(document.getElementById("saque").value);
+    if (nomeInput && !isNaN(saldoInput)) {
+        banco.cadastrarCliente(nomeInput, saldoInput);
+        if (!isNaN(depositoInput)) {
+            banco.depositar(1, depositoInput);
+            if (!isNaN(saqueInput)) {
+                banco.sacar(1, saqueInput);
+                document.getElementById("extrato").innerHTML = `<p class="fw-medium text-center">Saldo do cliente ${nomeInput} é de R$${banco.consultarSaldo(1)}</p>`;
+            }
+            else {
+                alert("Valor de saque inválido");
+            }
+        }
+        else {
+            alert("Valor do depósito inválido");
+        }
+    }
+    else {
+        alert("Dados inválidos");
+    }
+}
+function limparInputs() {
     let nomeInput = document.getElementById("nome");
     let saldoInput = document.getElementById("saldo");
     let depositoInput = document.getElementById("deposito");
     let saqueInput = document.getElementById("saque");
-    btn.addEventListener("click", () => {
-        const clienteId = 1;
-        const nome = nomeInput?.value || "Anônimo";
-        const saldo = parseFloat(saldoInput?.value || "0") || 0;
-        const deposito = parseFloat(depositoInput?.value || "0") || 0;
-        const saque = parseFloat(saqueInput?.value || "0") || 0;
-        const userInfo = {
-            nome: nome,
-            saldo: saldo,
-            deposito: deposito,
-            saque: saque,
-        };
-        console.log(JSON.stringify(userInfo));
-        banco.cadastrarCliente(nome, saldo);
-        banco.consultarSaldo(clienteId);
-        banco.depositar(clienteId, deposito);
-        banco.sacar(clienteId, saque);
-    });
+    if (nomeInput)
+        nomeInput.value = "";
+    if (saldoInput)
+        saldoInput.value = "";
+    if (depositoInput)
+        depositoInput.value = "";
+    if (saqueInput)
+        saqueInput.value = "";
 }
-informacoesDoUsuario();
+document
+    .getElementById("btn-submit")
+    .addEventListener("click", informacoesDoUsuario);
+document.getElementById("btn-limpar").addEventListener("click", limparInputs);

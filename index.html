@@ -10,14 +10,14 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/src/css/styles.css" />
+    <link rel="stylesheet" href="./src/css/styles.css" />
   </head>
   <body>
     <nav class="navbar bg-body-tertiary" id="navbar">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img
-            src="/src/images/logo-bank.jpg"
+            src="./src/images/logo-bank.jpg"
             alt="Logo"
             width="30"
             height="24"
@@ -94,8 +94,11 @@
         <button type="button" class="btn btn-primary" id="btn-submit">
           Enviar
         </button>
-        <button type="button" class="btn btn-outline-secondary">Limpar</button>
+        <button type="button" class="btn btn-outline-secondary" id="btn-limpar">
+          Limpar
+        </button>
       </div>
+      <div id="extrato"></div>
     </div>
 
     <script
@@ -103,6 +106,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="/dist/main.js"></script>
+    <script type="module" src="./dist/main.js"></script>
   </body>
 </html>
