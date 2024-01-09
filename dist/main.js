@@ -39,6 +39,7 @@ function limparInputs() {
         depositoInput.value = "";
     if (saqueInput)
         saqueInput.value = "";
+    document.getElementById("extrato").style.display = "block";
 }
 document
     .getElementById("btn-submit")
