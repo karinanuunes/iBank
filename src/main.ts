@@ -47,7 +47,7 @@ function limparInputs() {
   if (saldoInput) saldoInput.value = "";
   if (depositoInput) depositoInput.value = "";
   if (saqueInput) saqueInput.value = "";
-  document.getElementById("extrato").style.display = "block";
+  document.getElementById("extrato").style.display = "none";
 }
 
 document
