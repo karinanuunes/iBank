@@ -14,7 +14,7 @@
   </head>
   <body>
     <nav class="navbar bg-body-tertiary" id="navbar">
-      <div class="container-fluid">
+      <div class="container-fluid" id="navbar">
         <a class="navbar-brand" href="#">
           <img
             src="./src/images/logo-bank.jpg"
@@ -25,9 +25,9 @@
           />
           iBank
         </a>
-        <ul class="nav nav-underline">
+        <ul class="nav nav-underline" id="nav-itens">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" href="#">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#cadastro">Cadastro</a>
@@ -36,7 +36,7 @@
             <a class="nav-link" href="#">Extrato</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Empréstimo</a>
+            <a class="nav-link disabled">Empréstimo</a>
           </li>
         </ul>
       </div>
@@ -48,47 +48,25 @@
       <span>Nome do cliente:</span>
       <div class="input-group flex-nowrap mb-3">
         <span class="input-group-text" id="addon-wrapping">@</span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="addon-wrapping"
-          id="nome"
-        />
+        <input type="text" class="form-control" id="nome" />
       </div>
       <span>Saldo:</span>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
         <span class="input-group-text">0.00</span>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Dollar amount (with dot and two decimal places)"
-          id="saldo"
-        />
+        <input type="text" class="form-control" id="saldo" />
       </div>
       <span>Depósito:</span>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
         <span class="input-group-text">0.00</span>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Dollar amount (with dot and two decimal places)"
-          id="deposito"
-        />
+        <input type="text" class="form-control" id="deposito" />
       </div>
       <span>Saque:</span>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
         <span class="input-group-text">0.00</span>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Dollar amount (with dot and two decimal places)"
-          id="saque"
-        />
+        <input type="text" class="form-control" id="saque" />
       </div>
       <div class="d-grid gap-2 col-6 mx-auto" id="btn">
         <button type="button" class="btn btn-primary" id="btn-submit">
